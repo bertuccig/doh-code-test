@@ -1,9 +1,6 @@
 package net.dinove.doh;
 
-import net.dinove.doh.processors.Buzzer;
-import net.dinove.doh.processors.FizzBuzzProcessor;
-import net.dinove.doh.processors.FizzBuzzer;
-import net.dinove.doh.processors.Fizzer;
+import net.dinove.doh.processors.*;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -12,7 +9,8 @@ public class FizzBuzzChainService {
     private FizzBuzzProcessor[] chain = {
             new Fizzer(),
             new Buzzer(),
-            new FizzBuzzer() };
+            new FizzBuzzer(),
+            new Lucky() };
 
     public String process(int value) {
 
