@@ -11,13 +11,15 @@ public class FizBuzzService {
 
     public void printFizzBuzzSequence(int[] seq) {
 
-        StringBuilder sb = new StringBuilder();
+        FizzBuzzStats stats = chain.process(seq);
 
-        for(int value : seq) {
+        System.out.println(stats.getOutput());
 
-            sb.append(String.format("%s ", chain.process(value)));
+        for(String key : stats.getStats().keySet()) {
+
+            int value = stats.getStats().get(key);
+
+            System.out.println(String.format("%s: %d", key, value));
         }
-
-        System.out.println(sb);
     }
 }

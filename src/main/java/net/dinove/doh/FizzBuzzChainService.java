@@ -12,15 +12,38 @@ public class FizzBuzzChainService {
             new FizzBuzzer(),
             new Lucky() };
 
-    public String process(int value) {
 
-        String output = "" + value;
+    public FizzBuzzStats process(int[] seq) {
 
-        for (FizzBuzzProcessor p : chain) {
+        StringBuilder sb = new StringBuilder();
+        FizzBuzzStats stats = new FizzBuzzStats();
 
-            output = p.process(value, output);
+        for(int value : seq) {
+
+            String current = "" + value;
+
+            for (FizzBuzzProcessor p : chain) {
+
+                current = p.process(value, current);
+            }
+
+            sb.append(String.format("%s ", current));
+
+            if(current.matches("^-?\\d+$")) {
+                current = "number";
+            }
+
+            if(stats.getStats().containsKey(current)) {
+
+                Integer currentCount = stats.getStats().get(current);
+                stats.getStats().put(current, currentCount + 1);
+            } else {
+                stats.getStats().put(current, 1);
+            }
         }
 
-        return output.trim();
+        stats.setOutput(sb.toString().trim());
+
+        return stats;
     }
 }

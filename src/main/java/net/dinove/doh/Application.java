@@ -19,10 +19,6 @@ public class Application implements CommandLineRunner {
         int[] sample = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 };
 
         service.printFizzBuzzSequence(sample);
-
-        System.out.println("args: " + args.length);
-
-        System.out.println("net.dinove.doh.Application start");
     }
 
     public static void main(String[] args) throws Exception {
